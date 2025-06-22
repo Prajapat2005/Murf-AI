@@ -1,5 +1,3 @@
-"use client"
-
 import { Volume2 } from "lucide-react"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
@@ -15,8 +13,6 @@ export default function VoiceSelection({ selectedVoice, onVoiceChange }: VoiceSe
   const getVoiceIcon = (gender: string) => {
     return gender === "male" ? "👨" : gender === "female" ? "👩" : "🎤"
   }
-
-  const selectedVoiceData = voices.find((v) => v.id === selectedVoice)
 
   return (
     <Card

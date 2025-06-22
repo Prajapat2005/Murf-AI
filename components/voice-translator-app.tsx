@@ -1,13 +1,12 @@
 "use client"
 
-import { useState, useRef, useEffect } from "react"
+import { useState } from "react"
 import AppHeader from "./app-header"
 import LanguageSelector from "./language-selector"
 import VoiceSelection from "./voice-selection"
 import VoiceRecording from "./voice-recording"
 import TextDisplay from "./text-display"
 import InstructionsCard from "./instructions-card"
-import { voices } from "@/constants/data"
 import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
 import axios from "axios"
 
@@ -18,7 +17,6 @@ export default function VoiceTranslatorApp() {
   const [translatedText, setTranslatedText] = useState("")
   const [fromLanguage, setFromLanguage] = useState("en")
   const [toLanguage, setToLanguage] = useState("es")
-  const [isPlaying, setIsPlaying] = useState(false)
   const [selectedVoice, setSelectedVoice] = useState("default")
   const [speak, setSpeak] = useState(false)
 
@@ -96,9 +94,7 @@ export default function VoiceTranslatorApp() {
     } catch (error: any) {
       console.log(error.message);
     }
-
     setSpeak(false);
-
   }
 
   return (

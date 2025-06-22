@@ -1,15 +1,6 @@
-"use client"
-
 import { Card, CardContent } from "@/components/ui/card"
-import { useEffect, useState } from "react"
 
 export default function InstructionsCard() {
-  const [isVisible, setIsVisible] = useState(false)
-
-  useEffect(() => {
-    const timer = setTimeout(() => setIsVisible(true), 1000)
-    return () => clearTimeout(timer)
-  }, [])
 
   const steps = [
     { icon: "🌐", text: "Select your source and target languages" },
@@ -21,9 +12,7 @@ export default function InstructionsCard() {
 
   return (
     <Card
-      className={`shadow-xl hover:shadow-2xl transition-all duration-700 transform hover:-translate-y-1 ${
-        isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
-      } bg-gradient-to-r from-blue-50 via-purple-50 to-pink-50 border-0`}
+      className="shadow-xl hover:shadow-2xl transition-all duration-700 transform hover:-translate-y-1 translate-y-0 opacity-100 bg-gradient-to-r from-blue-50 via-purple-50 to-pink-50 border-0"
     >
       <CardContent className="pt-8 pb-6">
         <div className="text-center space-y-6">
