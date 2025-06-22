@@ -86,7 +86,7 @@ export default function LanguageSelector({
             <label className="block text-sm font-medium text-gray-700 mb-2">To (Target Language)</label>
             <Select value={toLanguage} onValueChange={onToLanguageChange}>
               <SelectTrigger className="w-full h-12 border-2 border-gray-200 hover:border-purple-400 transition-colors duration-200 focus:ring-2 focus:ring-purple-500">
-                <SelectValue placeholder="Select target language" />
+                <SelectValue className="text-blue-600" placeholder="Select target language" />
               </SelectTrigger>
               <SelectContent className="max-h-60">
                 {languages.map((lang) => (

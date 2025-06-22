@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import AppHeader from "./app-header"
 import LanguageSelector from "./language-selector"
 import VoiceSelection from "./voice-selection"
@@ -13,10 +13,9 @@ import axios from "axios"
 export default function VoiceTranslatorApp() {
   const [isRecording, setIsRecording] = useState(false)
   const [isTranslating, setIsTranslating] = useState(false)
-  const [originalText, setOriginalText] = useState("")
   const [translatedText, setTranslatedText] = useState("")
-  const [fromLanguage, setFromLanguage] = useState("en")
-  const [toLanguage, setToLanguage] = useState("es")
+  const [fromLanguage, setFromLanguage] = useState("en-US")
+  const [toLanguage, setToLanguage] = useState("hi-IN")
   const [selectedVoice, setSelectedVoice] = useState("default")
   const [speak, setSpeak] = useState(false)
 
@@ -25,12 +24,12 @@ export default function VoiceTranslatorApp() {
     const temp = fromLanguage
     setFromLanguage(toLanguage)
     setToLanguage(temp)
-    setOriginalText("")
     setTranslatedText("")
+    resetTranscript()
   }
 
   const startListening = () => SpeechRecognition.startListening({ continuous: true, language: 'en-IN' });
-  const { transcript, browserSupportsSpeechRecognition } = useSpeechRecognition();
+  const { transcript, browserSupportsSpeechRecognition, resetTranscript } = useSpeechRecognition();
   const stopListening = () => SpeechRecognition.stopListening();
 
   const handelTranslate = async () => {
@@ -41,7 +40,7 @@ export default function VoiceTranslatorApp() {
       const response = await axios.post(
         "https://api.murf.ai/v1/text/translate",
         {
-          targetLanguage: "hi-IN",
+          targetLanguage: toLanguage,
           texts: [transcript],
         },
         {
@@ -73,6 +72,7 @@ export default function VoiceTranslatorApp() {
 
   const handelSpeak = async () => {
     setSpeak(true);
+
     try {
 
       let data = JSON.stringify({

@@ -1,23 +1,23 @@
 import type { Language, Voice } from "@/types"
 
 export const languages: Language[] = [
-  { code: "en", name: "English", flag: "🇺🇸" },
-  { code: "es", name: "Spanish", flag: "🇪🇸" },
-  { code: "fr", name: "French", flag: "🇫🇷" },
-  { code: "de", name: "German", flag: "🇩🇪" },
-  { code: "it", name: "Italian", flag: "🇮🇹" },
-  { code: "pt", name: "Portuguese", flag: "🇵🇹" },
-  { code: "ru", name: "Russian", flag: "🇷🇺" },
-  { code: "ja", name: "Japanese", flag: "🇯🇵" },
-  { code: "ko", name: "Korean", flag: "🇰🇷" },
-  { code: "zh", name: "Chinese", flag: "🇨🇳" },
-  { code: "ar", name: "Arabic", flag: "🇸🇦" },
-  { code: "hi", name: "Hindi", flag: "🇮🇳" },
+  { code: "en-US", name: "English", flag: "🇺🇸" },
+  { code: "es-MX", name: "Spanish", flag: "🇪🇸" },
+  { code: "fr-FR", name: "French", flag: "🇫🇷" },
+  { code: "de-DE", name: "German", flag: "🇩🇪" },
+  { code: "it-IT", name: "Italian", flag: "🇮🇹" },
+  { code: "pt-BR", name: "Portuguese", flag: "🇵🇹" },
+  { code: "ja-JP", name: "Japanese", flag: "🇯🇵" },
+  { code: "ko-KR", name: "Korean", flag: "🇰🇷" },
+  { code: "zh-CN", name: "Chinese", flag: "🇨🇳" },
+  { code: "hi-IN", name: "Hindi", flag: "🇮🇳" },
 ]
 
 export const voices: Voice[] = [
-  { id: "default", name: "Default Voice", gender: "neutral", accent: "Standard" },
-  { id: "male-1", name: "David", gender: "male", accent: "American" },
+  { id: "en-US-natalie", name: "Natalie", gender: "female", accent: "American" },
+  { id: "en-US-ken", name: "Ken", gender: "male", accent: "American" },
+
+
   { id: "female-1", name: "Sarah", gender: "female", accent: "American" },
   { id: "male-2", name: "James", gender: "male", accent: "British" },
   { id: "female-2", name: "Emma", gender: "female", accent: "British" },
@@ -27,4 +27,5 @@ export const voices: Voice[] = [
   { id: "female-4", name: "Greta", gender: "female", accent: "German" },
   { id: "male-5", name: "Carlos", gender: "male", accent: "Spanish" },
   { id: "female-5", name: "Sofia", gender: "female", accent: "Spanish" },
+
 ]
