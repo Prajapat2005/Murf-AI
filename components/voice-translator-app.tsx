@@ -20,7 +20,6 @@ export default function VoiceTranslatorApp() {
   const [toLanguage, setToLanguage] = useState("es")
   const [isPlaying, setIsPlaying] = useState(false)
   const [selectedVoice, setSelectedVoice] = useState("default")
-  const [audioFile, setAudioFile] = useState("");
   const [speak, setSpeak] = useState(false)
 
 
@@ -67,10 +66,10 @@ export default function VoiceTranslatorApp() {
   };
 
 
-  const playAudioWithExactTimeout = () => {
+  const playAudioWithExactTimeout = (audioFile: string) => {
 
     const audio = new Audio(audioFile);
-    audio.play().catch((err) => console.error("Error playing audio:", err));
+    return audio.play();
 
   };
 
@@ -92,12 +91,10 @@ export default function VoiceTranslatorApp() {
       const res = await axios.post("https://api.murf.ai/v1/speech/generate", data, { headers });
       console.log(JSON.stringify(res.data));
 
-      setAudioFile(res.data.audioFile);
-
-      playAudioWithExactTimeout();
+      await playAudioWithExactTimeout(res.data.audioFile);
 
     } catch (error: any) {
-      console.log(error);
+      console.log(error.message);
     }
 
     setSpeak(false);
