@@ -16,7 +16,7 @@ export default function VoiceTranslatorApp() {
   const [translatedText, setTranslatedText] = useState("")
   const [fromLanguage, setFromLanguage] = useState("en-US")
   const [toLanguage, setToLanguage] = useState("hi-IN")
-  const [selectedVoice, setSelectedVoice] = useState("default")
+  const [selectedVoice, setSelectedVoice] = useState("hi-IN-amit")
   const [speak, setSpeak] = useState(false)
 
 
