@@ -77,7 +77,7 @@ export default function VoiceTranslatorApp() {
 
       let data = JSON.stringify({
         "text": translatedText,
-        "voiceId": "hi-IN-amit",
+        "voiceId": selectedVoice
       });
 
       const headers = {
