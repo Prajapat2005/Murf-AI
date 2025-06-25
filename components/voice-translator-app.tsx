@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { use, useEffect, useState } from "react"
 import AppHeader from "./app-header"
 import LanguageSelector from "./language-selector"
 import VoiceSelection from "./voice-selection"
@@ -9,6 +9,9 @@ import TextDisplay from "./text-display"
 import InstructionsCard from "./instructions-card"
 import SpeechRecognition, { useSpeechRecognition } from "react-speech-recognition"
 import axios from "axios"
+import { Voice } from "@/types"
+import { voices } from "@/constants/data"
+import { set } from "react-hook-form"
 
 export default function VoiceTranslatorApp() {
   const [isRecording, setIsRecording] = useState(false)
@@ -19,6 +22,11 @@ export default function VoiceTranslatorApp() {
   const [selectedVoice, setSelectedVoice] = useState("hi-IN-amit")
   const [speak, setSpeak] = useState(false);
   const [audioFile, setAudioFile] = useState("");
+  const [selectedVoiceData, setSelectedVoiceData] = useState<any>();
+
+  useEffect(() => {
+    setSelectedVoiceData(voices.find((voice: Voice) => voice.id === selectedVoice));
+  }, [selectedVoice,])
 
   const swapLanguages = () => {
     const temp = fromLanguage
@@ -59,7 +67,7 @@ export default function VoiceTranslatorApp() {
     setIsTranslating(false)
   }
 
-  const playAudioWithExactTimeout = () => {
+  const playAudio = (audioFile: string) => {
     const audio = new Audio(audioFile)
     return audio.play()
   }
@@ -85,7 +93,7 @@ export default function VoiceTranslatorApp() {
 
       setAudioFile(res.data.audioFile);
 
-      await playAudioWithExactTimeout();
+      await playAudio(audioFile);
 
     } catch (error: any) {
       console.log(error.message)
@@ -121,7 +129,6 @@ export default function VoiceTranslatorApp() {
     }
   };
 
-
   return (
     <div className="min-h-screen bg-[linear-gradient(to_bottom,_#0d1039_0%,_#121e2b_4%,_#111111_10%)] lg:p-8">
       <div className="max-w-6xl mx-auto space-y-8">
@@ -135,7 +142,12 @@ export default function VoiceTranslatorApp() {
           onSwapLanguages={swapLanguages}
         />
 
-        <VoiceSelection selectedVoice={selectedVoice} onVoiceChange={setSelectedVoice} />
+        <VoiceSelection
+          selectedVoice={selectedVoice}
+          onVoiceChange={setSelectedVoice}
+          playAudio={playAudio}
+          selectedVoiceData={selectedVoiceData}
+        />
 
         <VoiceRecording
           transcript={transcript}

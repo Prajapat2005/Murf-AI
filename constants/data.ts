@@ -14,33 +14,33 @@ export const languages: Language[] = [
 ]
 
 export const voices: Voice[] = [
-  { id: "en-US-natalie", name: "Natalie", gender: "female", accent: "American" },
-  { id: "en-US-ken", name: "Ken", gender: "male", accent: "American" },
+  { id: "en-US-natalie", name: "Natalie", gender: "female", accent: "American", testUrl: "" },
+  { id: "en-US-ken", name: "Ken", gender: "male", accent: "American", testUrl: "" },
 
-  { id: "es-ES-elvira", name: "Elvira", gender: "female", accent: "Spanish" },
-  { id: "es-ES-javier", name: "Javier", gender: "male", accent: "Spanish" },
+  { id: "es-ES-elvira", name: "Elvira", gender: "female", accent: "Spanish", testUrl: "" },
+  { id: "es-ES-javier", name: "Javier", gender: "male", accent: "Spanish", testUrl: "" },
 
-  { id: "en-US-carter", name: "Carter", gender: "male", accent: "French" },
-  { id: "fr-FR-justine", name: "Justine", gender: "female", accent: "French" },
+  { id: "en-US-carter", name: "Carter", gender: "male", accent: "French", testUrl: "" },
+  { id: "fr-FR-justine", name: "Justine", gender: "female", accent: "French", testUrl: "" },
 
-  { id: "en-UK-ruby", name: "Ruby", gender: "female", accent: "German" },
-  { id: "de-DE-matthias", name: "Matthias", gender: "male", accent: "German" },
+  { id: "en-UK-ruby", name: "Ruby", gender: "female", accent: "German", testUrl: "" },
+  { id: "de-DE-matthias", name: "Matthias", gender: "male", accent: "German", testUrl: "" },
 
-  { id: "it-IT-lorenzo", name: "Lorenzo", gender: "male", accent: "Italian" },
-  { id: "it-IT-greta", name: "Greta", gender: "female", accent: "Italian" },
+  { id: "it-IT-lorenzo", name: "Lorenzo", gender: "male", accent: "Italian", testUrl: "" },
+  { id: "it-IT-greta", name: "Greta", gender: "female", accent: "Italian", testUrl: "" },
 
-  { id: "pt-BR-heitor", name: "Heitor", gender: "male", accent: "Portuguese" },
-  { id: "pt-BR-eloa", name: "Eloa", gender: "female", accent: "Portuguese" },
+  { id: "pt-BR-heitor", name: "Heitor", gender: "male", accent: "Portuguese", testUrl: "" },
+  { id: "pt-BR-eloa", name: "Eloa", gender: "female", accent: "Portuguese", testUrl: "" },
 
-  { id: "ja-JP-denki", name: "Denki", gender: "male", accent: "Japanese" },
-  { id: "ja-JP-kimi", name: "Kimi", gender: "female", accent: "Japanese" },
+  { id: "ja-JP-denki", name: "Denki", gender: "male", accent: "Japanese", testUrl: "" },
+  { id: "ja-JP-kimi", name: "Kimi", gender: "female", accent: "Japanese", testUrl: "" },
 
-  { id: "ko-KR-gyeong", name: "Gyeong", gender: "female", accent: "Korean" },
-  { id: "ko-KR-hwan", name: "Hwan", gender: "male", accent: "Korean" },
+  { id: "ko-KR-gyeong", name: "Gyeong", gender: "female", accent: "Korean", testUrl: "" },
+  { id: "ko-KR-hwan", name: "Hwan", gender: "male", accent: "Korean", testUrl: "" },
 
-  { id: "zh-CN-tao", name: "Tao", gender: "male", accent: "Chinese" },
-  { id: "zh-CN-jiao", name: "Jiao", gender: "female", accent: "Chinese" },
+  { id: "zh-CN-tao", name: "Tao", gender: "male", accent: "Chinese", testUrl: "" },
+  { id: "zh-CN-jiao", name: "Jiao", gender: "female", accent: "Chinese", testUrl: "" },
 
-  { id: "hi-IN-amit", name: "Amit", gender: "male", accent: "Indian" },
-  { id: "hi-IN-ayushi", name: "Ayushi", gender: "female", accent: "Indian" },
+  { id: "hi-IN-amit", name: "Amit", gender: "male", accent: "Indian", testUrl: "" },
+  { id: "hi-IN-ayushi", name: "Ayushi", gender: "female", accent: "Indian", testUrl: "" },
 ]

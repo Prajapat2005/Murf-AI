@@ -9,4 +9,6 @@ export interface Voice {
   name: string
   gender: "male" | "female"
   accent: string
+  testUrl: string
 }
+
