@@ -60,7 +60,7 @@ export default function VoiceSelection({ selectedVoice, onVoiceChange, playAudio
 
           <div className="space-y-3">
             <label className="block text-sm font-medium text-gray-300">Selected Voice Preview</label>
-            <div className="flex items-center gap-3 p-4 border-2 border-gray-600 rounded-lg bg-gray-700 hover:from-gray-700 hover:to-gray-600 transition-all duration-300">
+            <div className="flex items-center gap-3 p-4 border-2 border-gray-600 rounded-lg bg-gray-700 hover:border-blue-400  transition-all duration-200 focus:ring-2 focus:ring-blue-500">
               <span className="text-3xl">{getVoiceIcon(selectedVoiceData?.gender)}</span>
               <div className="flex-1">
                 <div className="font-medium text-gray-200">{selectedVoiceData?.name}</div>
