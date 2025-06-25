@@ -9,7 +9,6 @@ import TextDisplay from "./text-display"
 import InstructionsCard from "./instructions-card"
 import SpeechRecognition, { useSpeechRecognition } from "react-speech-recognition"
 import axios from "axios"
-import { set } from "react-hook-form"
 
 export default function VoiceTranslatorApp() {
   const [isRecording, setIsRecording] = useState(false)
