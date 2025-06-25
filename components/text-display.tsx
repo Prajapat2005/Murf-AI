@@ -1,6 +1,6 @@
 "use client"
 
-import { Play, Square } from "lucide-react"
+import { Play, Pause, Download } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Textarea } from "@/components/ui/textarea"
@@ -14,7 +14,8 @@ interface TextDisplayProps {
   handelTranslate: () => void
   translatedText: string
   handelSpeak: () => void
-  speak: boolean
+  speak: boolean,
+  onDownload: () => void,
 }
 
 export default function TextDisplay({
@@ -26,6 +27,7 @@ export default function TextDisplay({
   translatedText,
   handelSpeak,
   speak,
+  onDownload,
 }: TextDisplayProps) {
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 transition-all duration-700 transform translate-y-0 opacity-100">
@@ -46,7 +48,7 @@ export default function TextDisplay({
             /*
              onChange={(e) => onOriginalTextChange(e.target.value)} */
             placeholder="Your speech will appear here..."
-            className="min-h-[120px] md:min-h-[140px] resize-none border-2 border-gray-600 focus:border-blue-400 transition-colors duration-200 text-base bg-gray-700 text-white placeholder-gray-400"
+            className="min-h-[120px] md:min-h-[140px] resize-none border-2 border-gray-600 focus:border-blue-400 transition-colors duration-200 text-base bg-gray-700 text-white placeholder-slate-300"
             readOnly
           />
           <Button
@@ -81,11 +83,12 @@ export default function TextDisplay({
           <Textarea
             value={translatedText}
             placeholder="Translation will appear here..."
-            className="min-h-[120px] md:min-h-[140px] resize-none border-2 border-gray-600 focus:border-purple-400 transition-colors duration-200 text-base bg-gray-700 text-white placeholder-gray-400"
+            className="min-h-[120px] md:min-h-[140px] resize-none border-2 border-gray-600 focus:border-purple-400 transition-colors duration-200 text-base bg-gray-700 text-white placeholder-slate-300"
             readOnly
           />
           {translatedText && (
             <div className="flex gap-3">
+
               {!speak ? (
                 <Button
                   onClick={handelSpeak}
@@ -96,14 +99,22 @@ export default function TextDisplay({
                 </Button>
               ) : (
                 <Button
-                  // onClick={onStopPlaying}
-                  variant="destructive"
                   className="flex-1 h-12 bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 transition-all duration-300 transform hover:scale-105 active:scale-95 shadow-lg hover:shadow-xl animate-pulse"
                 >
-                  <Square className="h-5 w-5 mr-2" />
-                  Stop Playing
+                  <Pause className="h-5 w-5 mr-2" />
+                  Playing !!!!!!!
                 </Button>
               )}
+
+              <Button
+                onClick={onDownload}
+                variant="destructive"
+                className="flex-1 h-12 bg-blue-500 hover:bg-blue-600 transition-all duration-300 transform hover:scale-105 active:scale-95 shadow-lg hover:shadow-xl"
+              >
+                <Download className="h-5 w-5 mr-2" />
+                Download Translation
+              </Button>
+
             </div>
           )}
         </CardContent>
