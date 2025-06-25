@@ -43,5 +43,4 @@ export const voices: Voice[] = [
 
   { id: "hi-IN-amit", name: "Amit", gender: "male", accent: "Indian" },
   { id: "hi-IN-ayushi", name: "Ayushi", gender: "female", accent: "Indian" },
-
 ]

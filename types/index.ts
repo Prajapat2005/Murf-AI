@@ -7,17 +7,6 @@ export interface Language {
 export interface Voice {
   id: string
   name: string
-  gender: string
+  gender: "male" | "female"
   accent: string
-}
-
-export interface VoiceTranslatorState {
-  isRecording: boolean
-  isTranslating: boolean
-  originalText: string
-  translatedText: string
-  fromLanguage: string
-  toLanguage: string
-  isPlaying: boolean
-  selectedVoice: string
 }

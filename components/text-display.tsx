@@ -1,3 +1,5 @@
+"use client"
+
 import { Play, Square } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
@@ -5,14 +7,14 @@ import { Textarea } from "@/components/ui/textarea"
 import { Badge } from "@/components/ui/badge"
 
 interface TextDisplayProps {
-  transcript: string,
+  transcript: string
   fromLanguage: string
-  toLanguage: string,
-  isTranslating: boolean,
-  handelTranslate: () => void,
-  translatedText: string,
-  handelSpeak: () => void,
-  speak: boolean,
+  toLanguage: string
+  isTranslating: boolean
+  handelTranslate: () => void
+  translatedText: string
+  handelSpeak: () => void
+  speak: boolean
 }
 
 export default function TextDisplay({
@@ -25,12 +27,9 @@ export default function TextDisplay({
   handelSpeak,
   speak,
 }: TextDisplayProps) {
-
   return (
-    <div
-      className="grid grid-cols-1 lg:grid-cols-2 gap-6 transition-all duration-700 transform translate-y-0 opacity-100"
-    >
-      <Card className="shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-1 bg-white/80 backdrop-blur-sm border-0">
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 transition-all duration-700 transform translate-y-0 opacity-100">
+      <Card className="shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-1 bg-gray-800/90 backdrop-blur-sm border border-gray-700">
         <CardHeader className="pb-4">
           <CardTitle className="flex items-center gap-3 text-lg md:text-xl">
             <span className="bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">
@@ -47,7 +46,7 @@ export default function TextDisplay({
             /*
              onChange={(e) => onOriginalTextChange(e.target.value)} */
             placeholder="Your speech will appear here..."
-            className="min-h-[120px] md:min-h-[140px] resize-none border-2 border-gray-200 focus:border-blue-400 transition-colors duration-200 text-base"
+            className="min-h-[120px] md:min-h-[140px] resize-none border-2 border-gray-600 focus:border-blue-400 transition-colors duration-200 text-base bg-gray-700 text-white placeholder-gray-400"
             readOnly
           />
           <Button
@@ -67,7 +66,7 @@ export default function TextDisplay({
         </CardContent>
       </Card>
 
-      <Card className="shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-1 bg-white/80 backdrop-blur-sm border-0">
+      <Card className="shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-1 bg-gray-800/90 backdrop-blur-sm border border-gray-700">
         <CardHeader className="pb-4">
           <CardTitle className="flex items-center gap-3 text-lg md:text-xl">
             <span className="bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
@@ -82,7 +81,7 @@ export default function TextDisplay({
           <Textarea
             value={translatedText}
             placeholder="Translation will appear here..."
-            className="min-h-[120px] md:min-h-[140px] resize-none border-2 border-gray-200 focus:border-purple-400 transition-colors duration-200 text-base"
+            className="min-h-[120px] md:min-h-[140px] resize-none border-2 border-gray-600 focus:border-purple-400 transition-colors duration-200 text-base bg-gray-700 text-white placeholder-gray-400"
             readOnly
           />
           {translatedText && (

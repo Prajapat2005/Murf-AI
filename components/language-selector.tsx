@@ -21,7 +21,6 @@ export default function LanguageSelector({
   onToLanguageChange,
   onSwapLanguages,
 }: LanguageSelectorProps) {
-
   const [isSwapping, setIsSwapping] = useState(false)
 
   const handleSwap = () => {
@@ -33,9 +32,7 @@ export default function LanguageSelector({
   }
 
   return (
-    <Card
-      className="shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-1 translate-y-0 opacity-100">
-
+    <Card className="shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-1 translate-y-0 opacity-100 bg-gray-800/90 backdrop-blur-sm border border-gray-700">
       <CardHeader className="pb-4">
         <CardTitle className="flex items-center justify-center gap-2 text-xl md:text-2xl">
           <Volume2 className="h-6 w-6 text-blue-600 animate-pulse" />
@@ -47,19 +44,18 @@ export default function LanguageSelector({
 
       <CardContent>
         <div className="flex flex-col md:flex-row items-center gap-4 md:gap-6">
-
           <div className="flex-1 w-full space-y-2">
-            <label className="block text-sm font-medium text-gray-700 mb-2">From (Source Language)</label>
+            <label className="block text-sm font-medium text-gray-300 mb-2">From (Source Language)</label>
             <Select value={fromLanguage} onValueChange={onFromLanguageChange}>
-              <SelectTrigger className="w-full h-12 border-2 border-gray-200 hover:border-blue-400 transition-colors duration-200 focus:ring-2 focus:ring-blue-500">
+              <SelectTrigger className="w-full h-12 border-2 border-gray-600 hover:border-blue-400 transition-colors duration-200 focus:ring-2 focus:ring-blue-500 bg-gray-700 text-white">
                 <SelectValue placeholder="Select source language" />
               </SelectTrigger>
-              <SelectContent className="max-h-60">
+              <SelectContent className="max-h-60 bg-gray-800 border-gray-600">
                 {languages.map((lang) => (
                   <SelectItem
                     key={lang.code}
                     value={lang.code}
-                    className="hover:bg-blue-50 transition-colors duration-150"
+                    className="hover:bg-gray-700 transition-colors duration-150 text-white"
                   >
                     <span className="flex items-center gap-3">
                       <span className="text-xl">{lang.flag}</span>
@@ -75,25 +71,24 @@ export default function LanguageSelector({
             variant="outline"
             size="icon"
             onClick={handleSwap}
-            className={`mt-6 md:mt-8 h-12 w-12 rounded-full border-2 border-blue-300 hover:border-blue-500 hover:bg-blue-50 transition-all duration-300 transform hover:scale-110 ${isSwapping ? "rotate-180" : ""
-              }`}
+            className={`mt-6 md:mt-8 h-12 w-12 rounded-full border-2 border-gray-600 hover:border-blue-400 hover:bg-gray-700 transition-all duration-300 transform hover:scale-110 ${isSwapping ? "rotate-180" : ""} bg-gray-800`}
             title="Swap languages"
           >
             <span className="text-xl font-bold text-blue-600">⇄</span>
           </Button>
 
           <div className="flex-1 w-full space-y-2">
-            <label className="block text-sm font-medium text-gray-700 mb-2">To (Target Language)</label>
+            <label className="block text-sm font-medium text-gray-300 mb-2">To (Target Language)</label>
             <Select value={toLanguage} onValueChange={onToLanguageChange}>
-              <SelectTrigger className="w-full h-12 border-2 border-gray-200 hover:border-purple-400 transition-colors duration-200 focus:ring-2 focus:ring-purple-500">
+              <SelectTrigger className="w-full h-12 border-2 border-gray-600 hover:border-purple-400 transition-colors duration-200 focus:ring-2 focus:ring-purple-500 bg-gray-700 text-white">
                 <SelectValue className="text-blue-600" placeholder="Select target language" />
               </SelectTrigger>
-              <SelectContent className="max-h-60">
+              <SelectContent className="max-h-60 bg-gray-800 border-gray-600">
                 {languages.map((lang) => (
                   <SelectItem
                     key={lang.code}
                     value={lang.code}
-                    className="hover:bg-purple-50 transition-colors duration-150"
+                    className="hover:bg-gray-700 transition-colors duration-150 text-white"
                   >
                     <span className="flex items-center gap-3">
                       <span className="text-xl">{lang.flag}</span>
@@ -104,7 +99,6 @@ export default function LanguageSelector({
               </SelectContent>
             </Select>
           </div>
-
         </div>
       </CardContent>
     </Card>

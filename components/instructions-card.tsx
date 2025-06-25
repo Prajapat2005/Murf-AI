@@ -1,7 +1,6 @@
 import { Card, CardContent } from "@/components/ui/card"
 
 export default function InstructionsCard() {
-
   const steps = [
     { icon: "🌐", text: "Select your source and target languages" },
     { icon: "🎤", text: "Choose your preferred voice for translation playback" },
@@ -11,9 +10,7 @@ export default function InstructionsCard() {
   ]
 
   return (
-    <Card
-      className="shadow-xl hover:shadow-2xl transition-all duration-700 transform hover:-translate-y-1 translate-y-0 opacity-100 bg-gradient-to-r from-blue-50 via-purple-50 to-pink-50 border-0"
-    >
+    <Card className="shadow-xl hover:shadow-2xl transition-all duration-700 transform hover:-translate-y-1 translate-y-0 opacity-100 bg-gray-800 border border-gray-600">
       <CardContent className="pt-8 pb-6">
         <div className="text-center space-y-6">
           <p className="text-lg font-semibold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
@@ -24,21 +21,21 @@ export default function InstructionsCard() {
             {steps.map((step, index) => (
               <div
                 key={index}
-                className={`p-4 bg-white/70 backdrop-blur-sm rounded-xl shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 animate-fade-in`}
+                className={`p-4 bg-gray-700/80 backdrop-blur-sm rounded-xl shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 animate-fade-in`}
                 style={{ animationDelay: `${index * 200}ms` }}
               >
                 <div className="text-center space-y-2">
                   <div className="text-2xl mb-2 animate-bounce" style={{ animationDelay: `${index * 100}ms` }}>
                     {step.icon}
                   </div>
-                  <p className="text-sm text-gray-700 font-medium leading-relaxed">{step.text}</p>
+                  <p className="text-sm text-gray-200 font-medium leading-relaxed">{step.text}</p>
                 </div>
               </div>
             ))}
           </div>
 
-          <div className="mt-6 p-4 bg-white/50 backdrop-blur-sm rounded-lg border border-gray-200">
-            <p className="text-sm text-gray-600 italic">
+          <div className="mt-6 p-4 bg-gray-700/50 backdrop-blur-sm rounded-lg border border-gray-600">
+            <p className="text-sm text-gray-300 italic">
               ✨ Experience seamless real-time translation with beautiful voice synthesis
             </p>
           </div>

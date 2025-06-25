@@ -1,13 +1,13 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import AppHeader from "./app-header"
 import LanguageSelector from "./language-selector"
 import VoiceSelection from "./voice-selection"
 import VoiceRecording from "./voice-recording"
 import TextDisplay from "./text-display"
 import InstructionsCard from "./instructions-card"
-import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
+import SpeechRecognition, { useSpeechRecognition } from "react-speech-recognition"
 import axios from "axios"
 
 export default function VoiceTranslatorApp() {
@@ -19,7 +19,6 @@ export default function VoiceTranslatorApp() {
   const [selectedVoice, setSelectedVoice] = useState("hi-IN-amit")
   const [speak, setSpeak] = useState(false)
 
-
   const swapLanguages = () => {
     const temp = fromLanguage
     setFromLanguage(toLanguage)
@@ -28,13 +27,12 @@ export default function VoiceTranslatorApp() {
     resetTranscript()
   }
 
-  const startListening = () => SpeechRecognition.startListening({ continuous: true, language: 'en-IN' });
-  const { transcript, browserSupportsSpeechRecognition, resetTranscript } = useSpeechRecognition();
-  const stopListening = () => SpeechRecognition.stopListening();
+  const startListening = () => SpeechRecognition.startListening({ continuous: true, language: "en-IN" })
+  const { transcript, browserSupportsSpeechRecognition, resetTranscript } = useSpeechRecognition()
+  const stopListening = () => SpeechRecognition.stopListening()
 
   const handelTranslate = async () => {
-
-    setIsTranslating(true);
+    setIsTranslating(true)
 
     try {
       const response = await axios.post(
@@ -45,60 +43,54 @@ export default function VoiceTranslatorApp() {
         },
         {
           headers: {
-            'api-key': process.env.NEXT_PUBLIC_MAPBOX_API_KEY,
+            "api-key": process.env.NEXT_PUBLIC_MAPBOX_API_KEY,
             "Content-Type": "application/json",
           },
-        }
-      );
+        },
+      )
 
-      setTranslatedText(response.data.translations[0].translated_text);
+      setTranslatedText(response.data.translations[0].translated_text)
 
-      console.log(translatedText);
-
+      console.log(translatedText)
     } catch (error: any) {
-      console.error("Request Error:", error.response?.data || error.message);
+      console.error("Request Error:", error.response?.data || error.message)
     }
 
-    setIsTranslating(false);
-  };
-
+    setIsTranslating(false)
+  }
 
   const playAudioWithExactTimeout = (audioFile: string) => {
-
-    const audio = new Audio(audioFile);
-    return audio.play();
-
-  };
+    const audio = new Audio(audioFile)
+    return audio.play()
+  }
 
   const handelSpeak = async () => {
-    setSpeak(true);
+    setSpeak(true)
 
     try {
-
-      let data = JSON.stringify({
-        "text": translatedText,
-        "voiceId": selectedVoice
-      });
+      const data = JSON.stringify({
+        text: translatedText,
+        voiceId: selectedVoice,
+      })
 
       const headers = {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json',
-        'api-key': process.env.NEXT_PUBLIC_MAPBOX_API_KEY
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        "api-key": process.env.NEXT_PUBLIC_MAPBOX_API_KEY,
       }
 
-      const res = await axios.post("https://api.murf.ai/v1/speech/generate", data, { headers });
-      console.log(JSON.stringify(res.data));
+      const res = await axios.post("https://api.murf.ai/v1/speech/generate", data, { headers })
+      console.log(JSON.stringify(res.data))
 
-      await playAudioWithExactTimeout(res.data.audioFile);
-
+      await playAudioWithExactTimeout(res.data.audioFile)
     } catch (error: any) {
-      console.log(error.message);
+      console.log(error.message)
     }
-    setSpeak(false);
+    setSpeak(false)
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-100 p-4 md:p-6 lg:p-8">
+    <div className="min-h-screen bg-[linear-gradient(to_bottom,_#0d1039_0%,_#121e2b_4%,_#111111_10%)] lg:p-8">
       <div className="max-w-6xl mx-auto space-y-8">
         <AppHeader />
 
@@ -110,10 +102,7 @@ export default function VoiceTranslatorApp() {
           onSwapLanguages={swapLanguages}
         />
 
-        <VoiceSelection
-          selectedVoice={selectedVoice}
-          onVoiceChange={setSelectedVoice}
-        />
+        <VoiceSelection selectedVoice={selectedVoice} onVoiceChange={setSelectedVoice} />
 
         <VoiceRecording
           transcript={transcript}
