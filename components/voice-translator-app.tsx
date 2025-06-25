@@ -22,7 +22,7 @@ export default function VoiceTranslatorApp() {
   const [selectedVoice, setSelectedVoice] = useState("hi-IN-amit")
   const [speak, setSpeak] = useState(false);
   const [audioFile, setAudioFile] = useState("");
-  const [selectedVoiceData, setSelectedVoiceData] = useState<any>();
+  const [selectedVoiceData, setSelectedVoiceData] = useState<Voice | undefined>();
 
   useEffect(() => {
     setSelectedVoiceData(voices.find((voice: Voice) => voice.id === selectedVoice));
@@ -67,7 +67,7 @@ export default function VoiceTranslatorApp() {
     setIsTranslating(false)
   }
 
-  const playAudio = (audioFile: string) => {
+  const playAudio = (audioFile: string | undefined) => {
     const audio = new Audio(audioFile)
     return audio.play()
   }

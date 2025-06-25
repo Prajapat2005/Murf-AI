@@ -5,16 +5,17 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { voices } from "@/constants/data"
 import { Button } from "@/components/ui/button"
+import { Voice } from "@/types"
 
 interface VoiceSelectionProps {
   selectedVoice: string
   onVoiceChange: (voice: string) => void,
-  playAudio: (url: string) => void,
-  selectedVoiceData: any
+  playAudio: (url: string | undefined) => void,
+  selectedVoiceData: Voice | undefined
 }
 
 export default function VoiceSelection({ selectedVoice, onVoiceChange, playAudio, selectedVoiceData }: VoiceSelectionProps) {
-  const getVoiceIcon = (gender: string) => {
+  const getVoiceIcon = (gender: string | undefined) => {
     return gender === "male" ? "👨" : gender === "female" ? "👩" : "🎤"
   }
 
@@ -60,15 +61,15 @@ export default function VoiceSelection({ selectedVoice, onVoiceChange, playAudio
           <div className="space-y-3">
             <label className="block text-sm font-medium text-gray-300">Selected Voice Preview</label>
             <div className="flex items-center gap-3 p-4 border-2 border-gray-600 rounded-lg bg-gray-700 hover:from-gray-700 hover:to-gray-600 transition-all duration-300">
-              <span className="text-3xl">{getVoiceIcon(selectedVoiceData.gender)}</span>
+              <span className="text-3xl">{getVoiceIcon(selectedVoiceData?.gender)}</span>
               <div className="flex-1">
-                <div className="font-medium text-gray-200">{selectedVoiceData.name}</div>
-                <div className="text-sm text-gray-400">{selectedVoiceData.accent}</div>
+                <div className="font-medium text-gray-200">{selectedVoiceData?.name}</div>
+                <div className="text-sm text-gray-400">{selectedVoiceData?.accent}</div>
               </div>
               <Button
                 variant="outline"
                 size="sm"
-                onClick={() => playAudio(selectedVoiceData.testUrl)}
+                onClick={() => playAudio(selectedVoiceData?.testUrl)}
                 className="transition-all duration-300 transform hover:scale-105 border-gray-600 bg-gray-800 text-gray-200 hover:border-gray-500"
               >
                 <Volume2 className="h-4 w-4 mr-2" />
