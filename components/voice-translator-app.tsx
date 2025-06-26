@@ -48,7 +48,7 @@ export default function VoiceTranslatorApp() {
   }
 
 
-  const startListening = () => SpeechRecognition.startListening({ continuous: true, language: toLanguage })
+  const startListening = () => SpeechRecognition.startListening({ continuous: true, language: fromLanguage })
   const { transcript, browserSupportsSpeechRecognition, resetTranscript } = useSpeechRecognition()
   const stopListening = () => SpeechRecognition.stopListening()
 
@@ -56,6 +56,14 @@ export default function VoiceTranslatorApp() {
   const handelTranslate = async () => {
 
     setIsTranslating(true);
+
+    if (!transcript) {
+      toast.error("No Data For Translation", {
+        autoClose: 3000,
+        theme: "colored"
+      });
+      return;
+    }
 
     try {
 

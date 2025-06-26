@@ -1,9 +1,7 @@
 
 export default function AppHeader() {
   return (
-    <div
-      className="text-center space-y-4 transition-all duration-1000 transform "
-    >
+    <div className="text-center space-y-4 transition-all duration-1000 transform ">
       <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 bg-clip-text text-transparent">
         Voice Translator
       </h1>

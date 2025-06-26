@@ -1,6 +1,6 @@
 "use client"
 
-import { Play, Pause, Download } from "lucide-react"
+import { Play, Pause, Download, Copy } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Textarea } from "@/components/ui/textarea"
@@ -70,13 +70,25 @@ export default function TextDisplay({
 
       <Card className="shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-1 bg-gray-800/90 backdrop-blur-sm border border-gray-700">
         <CardHeader className="pb-4">
-          <CardTitle className="flex items-center gap-3 text-lg md:text-xl">
-            <span className="bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
-              Translated Text
-            </span>
-            <Badge variant="outline" className="border-purple-300 text-purple-700 bg-purple-50 animate-fade-in">
-              {toLanguage}
-            </Badge>
+          <CardTitle className="flex justify-between">
+            <div className="flex items-center gap-3 text-lg md:text-xl">
+              <span className="bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
+                Translated Text
+              </span>
+              <Badge variant="outline" className="border-purple-300 text-purple-700 bg-purple-50 animate-fade-in">
+                {toLanguage}
+              </Badge>
+            </div>
+            {translatedText &&
+              (<div>
+                <Button
+                  onClick={() => navigator.clipboard.writeText(translatedText)}
+                  className="flex-1 h-10 w-20 border-2 border-gray-600 bg-gray-700 text-white focus:border-purple-400 transition-colors duration-200 transform hover:scale-105 active:scale-95 shadow-lg hover:shadow-xl">
+                  <Copy className="h-5 w-5" />
+                  Copy
+                </Button>
+              </div>)
+            }
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
@@ -102,7 +114,7 @@ export default function TextDisplay({
                   className="flex-1 h-12 bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 transition-all duration-300 transform hover:scale-105 active:scale-95 shadow-lg hover:shadow-xl animate-pulse"
                 >
                   <Pause className="h-5 w-5 mr-2" />
-                  Playing !!!!!!!
+                  Playing!!
                 </Button>
               )}
 
