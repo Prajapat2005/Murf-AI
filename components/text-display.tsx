@@ -15,7 +15,7 @@ interface TextDisplayProps {
   translatedText: string
   handelSpeak: () => void
   speak: boolean,
-  onDownload: () => void,
+  handelDownload: () => void,
 }
 
 export default function TextDisplay({
@@ -27,7 +27,7 @@ export default function TextDisplay({
   translatedText,
   handelSpeak,
   speak,
-  onDownload,
+  handelDownload,
 }: TextDisplayProps) {
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 transition-all duration-700 transform translate-y-0 opacity-100">
@@ -107,7 +107,7 @@ export default function TextDisplay({
               )}
 
               <Button
-                onClick={onDownload}
+                onClick={handelDownload}
                 variant="destructive"
                 className="flex-1 h-12 bg-blue-500 hover:bg-blue-600 transition-all duration-300 transform hover:scale-105 active:scale-95 shadow-lg hover:shadow-xl"
               >
