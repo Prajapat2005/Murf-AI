@@ -15,7 +15,6 @@ A multilingual voice-to-voice translation app powered by Murf AI. Speak in your 
 
 ## 🔗 Live App
 
-[Try the App](#)  
 https://voice-translator-eight.vercel.app/
 
 ---
