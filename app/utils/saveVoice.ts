@@ -7,7 +7,7 @@ export const saveVoice = async (id: string, url: string) => {
             id,
             url,
         }
-        await axios.post("/api/postVoice", data);
+        await axios.post(`${process.env.HOST}/api/postVoice`, data);
 
         return {
             message: "Saved",
