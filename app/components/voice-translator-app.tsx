@@ -162,7 +162,7 @@ export default function VoiceTranslatorApp() {
 
     playAudio(file);
 
-    await saveVoice(id, "file");
+    await saveVoice(id, file);
 
   }
 
