@@ -11,7 +11,7 @@ export const POST = async (request: NextRequest) => {
         const reqBody = await request.json();
         const { id, url } = reqBody;
 
-        const data = new testVoice({
+        const data = await new testVoice({
             id,
             url,
         })
