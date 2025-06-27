@@ -7,7 +7,7 @@ export const getVoice = async (id: string) => {
         const data = {
             id,
         }
-        const response = await axios.post(`${process.env.HOST}/api/getVoice`, data);
+        const response = await axios.post(`/api/getVoice`, data);
 
         console.log(response.data.data);
 
