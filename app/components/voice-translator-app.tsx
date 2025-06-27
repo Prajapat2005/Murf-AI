@@ -11,12 +11,12 @@ import SpeechRecognition, { useSpeechRecognition } from "react-speech-recognitio
 import { toast } from "react-toastify";
 import { Voice } from "@/types"
 import { voices } from "@/constants/data"
-import { translate } from "@/utils/translate"
-import { download } from "@/utils/download"
-import { generateAudio } from "@/utils/voice"
+import { translate } from "@/app/utils/translate"
+import { download } from "@/app/utils/download"
+import { generateAudio } from "@/app/utils/voice"
 import "react-toastify/dist/ReactToastify.css";
-import { getVoice } from "@/utils/getVoice"
-import { saveVoice } from "@/utils/saveVoice"
+import { getVoice } from "@/app/utils/getVoice"
+import { saveVoice } from "@/app/utils/saveVoice"
 
 export default function VoiceTranslatorApp() {
   const [isRecording, setIsRecording] = useState(false)

@@ -7,9 +7,11 @@ export const getVoice = async (id: string) => {
         const data = {
             id,
         }
-        const url = await axios.post("/api/getVoice", data);
+        const response = await axios.post("/api/getVoice", data);
 
-        if (!url) {
+        console.log(response.data.data);
+
+        if (!response) {
             return {
                 message: "No url",
                 success: false
@@ -17,7 +19,7 @@ export const getVoice = async (id: string) => {
         }
 
         return {
-            message: url,
+            message: response.data.data,
             success: true
         }
 
