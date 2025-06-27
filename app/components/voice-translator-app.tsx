@@ -15,6 +15,8 @@ import { translate } from "@/utils/translate"
 import { download } from "@/utils/download"
 import { generateAudio } from "@/utils/voice"
 import "react-toastify/dist/ReactToastify.css";
+import { getVoice } from "@/utils/getVoice"
+import { saveVoice } from "@/utils/saveVoice"
 
 export default function VoiceTranslatorApp() {
   const [isRecording, setIsRecording] = useState(false)
@@ -62,6 +64,7 @@ export default function VoiceTranslatorApp() {
         autoClose: 3000,
         theme: "colored"
       });
+      setIsTranslating(false);
       return;
     }
 
@@ -109,7 +112,7 @@ export default function VoiceTranslatorApp() {
     } catch (error: any) {
 
       console.error("Request Error:", error.response?.data || error.message);
-
+      setSpeak(false);
     }
   }
 
@@ -139,6 +142,30 @@ export default function VoiceTranslatorApp() {
     setSpeak(false);
   };
 
+  const testVoice = async (id: string) => {
+
+    const response1 = await getVoice(id);
+
+    if (response1.success) {
+      await playAudio(response1.message);
+      return;
+    }
+
+    const data = {
+      text: `Hello I am ${selectedVoiceData?.name}, How can I help you`,
+      selectedVoice: selectedVoice
+    }
+
+    const response2 = await generateAudio(data);
+
+    const file = response2.data.audioFile;
+
+    playAudio(file);
+
+    await saveVoice(id, "file");
+
+  }
+
 
   return (
     <div className="min-h-screen bg-[linear-gradient(to_bottom,_#0d1039_0%,_#121e2b_4%,_#111111_10%)] lg:p-8">
@@ -156,8 +183,8 @@ export default function VoiceTranslatorApp() {
         <VoiceSelection
           selectedVoice={selectedVoice}
           onVoiceChange={setSelectedVoice}
-          playAudio={playAudio}
           selectedVoiceData={selectedVoiceData}
+          testVoice={testVoice}
         />
 
         <VoiceRecording

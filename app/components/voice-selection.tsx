@@ -10,11 +10,11 @@ import { Voice } from "@/types"
 interface VoiceSelectionProps {
   selectedVoice: string
   onVoiceChange: (voice: string) => void,
-  playAudio: (url: string) => void,
   selectedVoiceData: Voice | undefined
+  testVoice: (x: string) => void
 }
 
-export default function VoiceSelection({ selectedVoice, onVoiceChange, playAudio, selectedVoiceData }: VoiceSelectionProps) {
+export default function VoiceSelection({ selectedVoice, onVoiceChange, selectedVoiceData, testVoice }: VoiceSelectionProps,) {
   const getVoiceIcon = (gender: string | undefined) => {
     return gender === "male" ? "👨" : gender === "female" ? "👩" : "🎤"
   }
@@ -69,7 +69,8 @@ export default function VoiceSelection({ selectedVoice, onVoiceChange, playAudio
               <Button
                 variant="outline"
                 size="sm"
-                //onClick={() => playAudio()}
+                // @ts-ignore
+                onClick={() => testVoice(selectedVoiceData.id)}
                 className="transition-all duration-300 transform hover:scale-105 border-gray-600 bg-gray-800 text-gray-200 hover:border-gray-500"
               >
                 <Volume2 className="h-4 w-4 mr-2" />
