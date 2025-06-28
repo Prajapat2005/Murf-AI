@@ -9,6 +9,11 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
+  reactStrictMode: true,
+  env: {
+    MONGO_URI: process.env.MONGO_URI,
+  }
+
 }
 
 export default nextConfig

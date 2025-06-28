@@ -98,7 +98,7 @@ export default function VoiceTranslatorApp() {
     try {
 
       const data = {
-        text: transcript,
+        text: translatedText,
         selectedVoice: selectedVoice
       }
       const response = await generateAudio(data);
