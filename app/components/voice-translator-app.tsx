@@ -35,9 +35,12 @@ export default function VoiceTranslatorApp() {
 
   useEffect(() => {
     setAudioFile("");
-    resetTranscript();
     setTranslatedText("");
   }, [fromLanguage, toLanguage]);
+
+  useEffect(() => {
+    resetTranscript();
+  }, [fromLanguage]);
 
   useEffect(() => {
     setAudioFile("");
